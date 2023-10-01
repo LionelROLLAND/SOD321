@@ -1,0 +1,79 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+
+%\voffset=-1.5cm
+%\hoffset=0cm
+%\textwidth=16cm
+%\textheight=22.0cm
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%\setlength{\marginparwidth}{0pt}
+
+\usepackage{subcaption}
+\usepackage{float}
+
+
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{dateplot}
+\usepgfplotslibrary{statistics}
+\usetikzlibrary{pgfplots.statistics} % LATEX and plain TEX
+
+\usepackage{titlesec}
+
+\usepackage{datetime}
+
+\usepackage{array}
+\usepackage{csquotes}
+
+\title{Projet aérodromes}
+\author{Antonin Rogé \& Lionel Rolland}
+\date{\monthname \ \the\day\textsuperscript{th} \the\year}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Notations}
+
+Notons $R \subset \mathbb{N}^*$ l'ensemble des régions.
+Notons $N$ l'ensemble des aérodromes. $\forall i \in N$, notons $r_i \in R \cup \{0\}$ la région
+à laquelle appartient l'aérodrome, $x_i$ sa coordonnée en $x$ et $y_i$ sa
+coordonnée en $y$. $x_ij \in \{0; 1\}$. Notons $s$ l'aérodrome de départ et $t$ celui d'arrivée.
+Soit $A \subset N \times N$ l'ensemble des arcs. $\forall (i,j) \in A$ soit
+$a_{ij}$ la variable associée à la sélection de l'arc $(i, j)$.
+
+\section{Contraintes supplémentaires afin de passer dans toutes les régions}
+
+Un set de $|R|$ contraintes simples permettant d'assurer que l'on passe dans toutes les régions :
+
+$$\forall r \in R \quad \sum_{\substack{i \in N \\ r_i = r}}
+\Big(\sum_{j \in N \\ (i, j) \in A} a_{i, j} + \sum_{j \in N \\ (j, i) \in A} a_{j, i} \Big) \geq 1$$
+
+Cependant, cette contrainte peut être raffinée pour obtenir des bornes de relaxation PL plus intéressantes.
+Supposons sans perte de génaralité que le graphe est connexe, et que $r_s = r_t = 0$.
+
+Dans le cas d'un graphe non orienté, on peut simplifier ces contraintes par :
+
+$$\forall r \in R \quad \sum_{\substack{i \in N \\ r_i = r}} \sum_{\substack{j \in N \\ (i, j) \in A}} a_{i, j} \geq 1$$
+
+On peut même encore aller plus loin avec simplement :
+
+$$\forall r \in R \quad \sum_{\substack{i \in N \\ r_i = r}} \sum_{\substack{j \in N \\ r_j \neq r \\ (i, j) \in A}} a_{i, j} \geq 1$$
+
+\end{document}
