@@ -63,7 +63,7 @@ $a_{ij}$ la variable associée à la sélection de l'arc $(i, j)$.
 Un set de $|R|$ contraintes simples permettant d'assurer que l'on passe dans toutes les régions :
 
 $$\forall r \in R \quad \sum_{\substack{i \in N \\ r_i = r}}
-\Big(\sum_{j \in N \\ (i, j) \in A} a_{i, j} + \sum_{j \in N \\ (j, i) \in A} a_{j, i} \Big) \geq 1$$
+\Big(\sum_{\substack{j \in N \\ (i, j) \in A}} a_{i, j} + \sum_{\substack{j \in N \\ (j, i) \in A}} a_{j, i} \Big) \geq 1$$
 
 Cependant, cette contrainte peut être raffinée pour obtenir des bornes de relaxation PL plus intéressantes.
 Supposons sans perte de génaralité que le graphe est connexe, et que $r_s = r_t = 0$.
