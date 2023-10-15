@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: sandbox.ipynb
+  checksum: 991b874edaa2d03ad63c3d32bd3e3f6f0e1e8b92fd27eb0320c160542eaed16e
+version: ""
