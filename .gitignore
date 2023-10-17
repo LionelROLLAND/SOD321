@@ -5,3 +5,4 @@
 *.toc
 
 data/*
+.ipynb_checkpoints/*
