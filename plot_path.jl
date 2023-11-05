@@ -428,14 +428,14 @@ function plot_path(edges1, edges2, weight2, coords, name)
     println(color_nodes)
 
 
-    graphplot(
+    gp = graphplot(
         gr,
         x=vec_xNode,
         y=vec_yNode,
         names=1:Graphs.nv(gr),
         fontsize=8,
         nodeshape=:circle,
-        markersize=1,
+        markersize=10,
         markerstrokewidth=1,
         # edges
         edgelabel=weights_dict,  # Use the edge_labels array for labels
@@ -445,6 +445,7 @@ function plot_path(edges1, edges2, weight2, coords, name)
         markercolor=color_nodes,
         curvature_scalar=0.2,
     )
+    savefig(gp, name)
 end
 
 
@@ -456,7 +457,7 @@ end
 
 
 
-instance = joinpath("data", "instance_40_1.txt")
+instance = joinpath("data", "instance_20_1.txt")
 n, d, f, Amin, Nr, R, regions, coord, D = readInstance(instance)
 pb_data = create_pb_data(instance)
 c_data = pb_data.c_data
@@ -489,4 +490,4 @@ for edge in graph2
     push!(weight2, edge_matrix(D)[edge])
 end
 
-plot_path(graph1, graph2, weight2, coord, "inst_40_1_opti.png")
+plot_path(graph1, graph2, weight2, coord, "inst_20_1_opti.png")
