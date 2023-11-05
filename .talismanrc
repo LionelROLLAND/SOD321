@@ -1,4 +1,6 @@
 fileignoreconfig:
 - filename: sandbox.ipynb
   checksum: 991b874edaa2d03ad63c3d32bd3e3f6f0e1e8b92fd27eb0320c160542eaed16e
+- filename: plot_path.jl
+  checksum: 2579433f7c8e3370f2dbe13b264bf86fb85480af312c3f7ebbb0ef7a495caba5
 version: ""
